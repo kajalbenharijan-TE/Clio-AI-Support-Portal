@@ -3,7 +3,7 @@ export default function ClioPortal() {
     { 
       name: "Slack", 
       url: "https://clio.slack.com/sso/login", 
-      icon: "💬",
+      icon: "/Slack.png", // <--- Must match filename exactly
       description: "Company communications."
     },
     { 
@@ -15,7 +15,7 @@ export default function ClioPortal() {
     { 
       name: "Letter AI", 
       url: "https://app.letter.ai/sso/clio", 
-      icon: "✉️",
+      icon: "/Letter_AI.png", // <--- Must match filename exactly
       description: "Sales content generation."
     },
     { 
@@ -31,7 +31,6 @@ export default function ClioPortal() {
       description: "Pre-escalation checklist."
     }
   ];
-
   return (
     <main className="min-h-screen bg-slate-50 p-8 flex items-center justify-center">
       <div className="max-w-6xl w-full">
