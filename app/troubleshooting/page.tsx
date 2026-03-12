@@ -2,11 +2,11 @@ export default function TroubleshootingPage() {
   const steps = [
     {
       title: "Define the End Goal",
-      detail: "What is the user specifically trying to achieve? (e.g., Accessing Workflows, Syncing Calendar)."
+      detail: "Mention what you need from TE/Solutions/TLs."
     },
     {
       title: "Mapping the Workflow",
-      detail: "List the exact steps taken. Note where the error occurs and capture the timestamp."
+      detail: "List the exact steps taken. If tried different browsers, cleared cache etc"
     },
     {
       title: "Attempt Reproduction",
@@ -14,11 +14,11 @@ export default function TroubleshootingPage() {
     },
     {
       title: "Account ID Audit",
-      detail: "Search the email in the Admin Panel. Check for multiple IDs (e.g., 383719 vs 342953). Bad data often hides here."
+      detail: "Search the email in the Admin Panel. Get correct ID and mention user ID "
     },
     {
       title: "Technical Escalation (T.E.)",
-      detail: "If the above fails, request a T.E. agent to run the 'Reset User Manage Data Job' or 'Split User Record' task."
+      detail: "check with TE"
     }
   ];
 
@@ -52,7 +52,7 @@ export default function TroubleshootingPage() {
               ⚠️ Critical Check
             </h3>
             <p className="text-amber-800 text-sm mt-2">
-              Verify if the email is associated with a different Account ID in the main Admin Panel. If IDs don't match, the Manage User ID needs to be flushed via the Workflows Admin Panel.
+              Have all screenshots/screen recording ready with Urls before consulting
             </p>
           </div>
         </div>
