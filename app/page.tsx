@@ -1,10 +1,11 @@
 import Link from 'next/link';
 
 export default function ClioPortal() {
-  const apps = [
+
+    const apps = [
     { 
       name: "Slack", 
-      url: "https://clio.slack.com/", 
+      url: "https://clio.slack.com/sso/login", 
       icon: "💬",
       description: "Company communications and alerts."
     },
@@ -16,10 +17,18 @@ export default function ClioPortal() {
     },
     { 
       name: "Letter AI", 
-      url: "https://app.letter.ai/", 
+      url: "https://app.letter.ai/sso/clio", 
       icon: "✉️",
       description: "Sales and personalized content generation."
     },
+    // NEW BUTTON ADDED BELOW
+    { 
+      name: "Help Center", 
+      url: "https://help.clio.com", 
+      icon: "❓",
+      description: "Official Clio support and documentation."
+    },
+  ];
   ];
 
   return (
