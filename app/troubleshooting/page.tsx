@@ -15,7 +15,8 @@ export default function TroubleshootingPage() {
     { title: "Mapping the Workflow", detail: "List exact steps, browser info, and timestamps." },
     { title: "Attempt Reproduction", detail: "Try mimic behavior in a Demo Account." },
     { title: "Linear Check", detail: "Verify if a bug report already exists in Linear." },
-    { title: "Upload Screenshots/Media", detail: "Capture full media screen (including URL). Upload to Google Drive with 'Anyone at Clio' access." }
+    { title: "Upload Screenshots/Media", detail: "Capture full media screen (including URL). Upload to Google Drive with 'Anyone at Clio' access." },
+    { title: "Portal Resource Check", detail: "Ensure Slack (channels), NotebookLM (internal docs), Letter AI, and Help Center have been searched for existing solutions." }
   ];
 
   return (
@@ -55,7 +56,6 @@ export default function TroubleshootingPage() {
             ))}
           </div>
 
-          {/* CRITICAL BOX SUMMARY */}
           <div className={`mt-10 p-8 rounded-3xl border transition-all ${
             darkMode ? 'bg-amber-950/30 border-amber-500/20' : 'bg-amber-50 border-amber-200'
           }`}>
@@ -65,7 +65,7 @@ export default function TroubleshootingPage() {
               🚨 T.E. Readiness Check
             </h3>
             <p className={`text-sm font-medium ${darkMode ? 'text-amber-100/70' : 'text-amber-900'}`}>
-              Escalate to Technical Support **only** after Step 6 is complete. Consults without Google Drive links containing full-screen media will be returned for more information.
+              Escalate to Technical Support **only** after all 7 steps are complete. Consults missing G-Drive media or portal resource verification will be returned.
             </p>
           </div>
         </div>
