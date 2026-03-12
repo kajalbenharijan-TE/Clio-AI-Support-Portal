@@ -35,8 +35,8 @@ export default function ClioPortal() {
     <main className="min-h-screen bg-slate-50 p-8 flex items-center justify-center">
       <div className="max-w-6xl w-full">
         <header className="mb-12 text-center">
-          <h1 className="text-4xl font-extrabold text-blue-900 tracking-tight">Clio Employee Gateway</h1>
-          <p className="text-slate-500 mt-3 text-lg font-medium">Authenticated AI & Support Tools</p>
+          <h1 className="text-4xl font-extrabold text-blue-900 tracking-tight">Support Okta Portal</h1>
+          <p className="text-slate-500 mt-3 text-lg font-medium">Clio Support Tools</p>
         </header>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
