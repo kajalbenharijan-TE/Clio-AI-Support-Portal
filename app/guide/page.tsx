@@ -11,52 +11,56 @@ export default function HelpGuide() {
 
   const guides = [
     {
-      title: "De-Escalation Cheat Sheet",
-      icon: "📣",
-      url: "https://app.letter.ai/preview-content?contentId=bea79fe7-690d-4eee-a16f-87d6f0284941",
-      points: [
-        "Tone: Slow down speaking pace; use verbal pauses.",
-        "Goal: Address the Practical AND the Emotional needs.",
-        "Safety: End call for racism, sexism, or personal abuse.",
-        "Ask: 'What is the main outcome you're hoping for today?'"
-      ],
-      hasTalkTrack: true
-    },
-    {
       title: "QuickBooks Online (QBO)",
       icon: "⚙️",
-      url: "https://app.letter.ai/preview-content?contentId=c0256c55-7bfb-419e-ab55-9b7676e39e7f",
+      letterAiUrl: "https://app.letter.ai/preview-content?contentId=c0256c55-7bfb-419e-ab55-9b7676e39e7f",
+      gemLink: "https://gemini.google.com/gem/1UMOuiOf2kvFPj39yibtsZ5aqrtBiOB-g?usp=sharing",
       points: [
-        "Requirements: Essentials, Plus, or Advanced only.",
-        "Sync Direction: Bills/Payments (Clio → QBO).",
-        "Hard Costs: QBO → Clio (Note: Unsupported on Essentials).",
-        "Contacts: Only syncs after the first bill is approved."
+        "Reqs: Essentials, Plus, Advanced (Simple Start = No).",
+        "Hard Costs: QBO → Clio (The only inward sync).",
+        "Sync Flow: Bills & Payments flow Clio → QBO.",
+        "Contacts: Only syncs after 1st bill is approved."
       ],
-      proTip: "Simple Start is NOT supported."
-    },
-    {
-      title: "Subscription & Cancellation",
-      icon: "💳",
-      url: "https://app.letter.ai/preview-content/custom-content?contentId=ad51e89f-bc4c-466c-817e-32dac89d4d0d",
-      points: [
-        "Verification: Support Code + Admin/Owner status.",
-        "Cancellations: Handoff to Retention via Salesforce Swarm.",
-        "Policy: Strict no-refund policy (Compassionate but firm).",
-        "Manual Billing: Only AR team can adjust suspension."
-      ],
-      proTip: "Never guarantee a refund will be issued."
+      proTip: "Essentials plan does NOT support Hard Cost sync."
     },
     {
       title: "Xero Integration",
       icon: "🏦",
-      url: "https://help.clio.com/hc/en-us/articles/9290118056603-Xero-and-Clio",
+      letterAiUrl: "https://help.clio.com/hc/en-us/articles/9290118056603-Xero-and-Clio",
+      gemLink: "https://gemini.google.com/gem/1UMOuiOf2kvFPj39yibtsZ5aqrtBiOB-g?usp=sharing",
       points: [
-        "Sync Timing: Runs automatically every 15-30 minutes.",
-        "Trust Funds: Reconciliation is manual (Does NOT sync).",
-        "Rounding: Xero rounds line items to 2 decimal places.",
-        "Hard Costs: Requires 'administrative permissions' to enable."
+        "Timing: Auto-syncs roughly every 15-30 minutes.",
+        "Trust Funds: Reconciliation is MANUAL (No sync).",
+        "Rounding: Xero rounds to 2 decimals (1-cent gaps).",
+        "Paid Bills: Do not edit in Clio after they sync."
       ],
-      proTip: "Avoid editing paid invoices after they sync."
+      proTip: "Mapping categories affects NEW invoices only."
+    },
+    {
+      title: "Clio Drive",
+      icon: "📁",
+      letterAiUrl: "https://app.letter.ai/sso/clio/drive-playbook",
+      gemLink: "https://gemini.google.com/gem/1hvsEoMfhuZ4md7CiXnltyaNgHtAjVayb?usp=sharing",
+      points: [
+        "Requirements: Windows 10+ or macOS 10.13+.",
+        "Function: Mirrored file system for Clio Manage docs.",
+        "Syncing: Local changes update Clio instantly.",
+        "Conflicts: Check the 'Conflict' folder for version overlaps."
+      ],
+      proTip: "Do not store active Database files (.pst, .backup) here."
+    },
+    {
+      title: "Clio Accounting",
+      icon: "💰",
+      letterAiUrl: "https://app.letter.ai/sso/clio/accounting-sop",
+      gemLink: "https://gemini.google.com/gem/1IvCpHMeBQXVweSyhhJPkfWX7LCw4C7km?usp=sharing",
+      points: [
+        "Bank Feeds: Connects directly via Plaid integration.",
+        "Trust: Generates 3-way Trust reconciliation reports.",
+        "Checks: Supports manual and batch check printing.",
+        "Scope: Built-in general ledger management for firms."
+      ],
+      proTip: "Verify 'Opening Balances' before enabling bank sync."
     }
   ];
 
@@ -71,12 +75,16 @@ export default function HelpGuide() {
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <a href="/" className={`text-sm font-bold flex items-center gap-2 hover:opacity-70 transition-all ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>
-            ← Back to SupportOKTA
+            ← Back to Dashboard
           </a>
+          <button onClick={() => setDarkMode(!darkMode)} className="p-2 text-xs uppercase font-bold tracking-widest border rounded-lg">
+            {darkMode ? '☀️ Light' : '🌙 Dark'}
+          </button>
         </div>
 
         <header className="mb-12 text-center">
           <h1 className="text-4xl font-black mb-3">Help <span className="text-blue-500">Guides</span></h1>
+          <p className="text-sm opacity-60">Internal Battle Cards & Documentation Links</p>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -98,30 +106,28 @@ export default function HelpGuide() {
                 ))}
               </ul>
 
-              {guide.proTip && (
-                <div className={`mb-6 p-3 rounded-xl text-[11px] font-bold uppercase tracking-tight ${
-                  darkMode ? 'bg-blue-900/20 text-blue-400' : 'bg-blue-50 text-blue-700'
-                }`}>
-                  💡 PRO-TIP: {guide.proTip}
-                </div>
-              )}
+              <div className={`mb-6 p-3 rounded-xl text-[10px] font-bold uppercase ${
+                darkMode ? 'bg-blue-900/20 text-blue-400' : 'bg-blue-50 text-blue-700'
+              }`}>
+                💡 PRO-TIP: {guide.proTip}
+              </div>
 
               <div className="flex flex-col gap-3">
-                {guide.hasTalkTrack && (
-                  <button 
-                    onClick={copyTalkTrack}
-                    className="w-full py-2.5 text-[10px] font-bold uppercase tracking-widest bg-amber-600/10 text-amber-500 border border-amber-500/20 rounded-xl hover:bg-amber-600 hover:text-white transition-all"
-                  >
-                    📋 Copy Warning Talk Track
-                  </button>
-                )}
                 <a 
-                  href={guide.url} 
+                  href={guide.gemLink} 
                   target="_blank" 
-                  rel="noopener noreferrer"
+                  className={`w-full py-2.5 text-center text-[10px] font-bold uppercase tracking-widest rounded-xl border transition-all ${
+                    darkMode ? 'bg-emerald-600/10 text-emerald-400 border-emerald-500/20 hover:bg-emerald-600 hover:text-white' : 'bg-emerald-50 text-emerald-700 border-emerald-100 hover:bg-emerald-600 hover:text-white'
+                  }`}
+                >
+                  💎 View Gem Resource
+                </a>
+                <a 
+                  href={guide.letterAiUrl} 
+                  target="_blank" 
                   className="w-full py-3 text-center text-[10px] font-bold uppercase tracking-widest bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all"
                 >
-                  Open Full Playbook ↗
+                  Open Letter AI Playbook ↗
                 </a>
               </div>
             </div>
