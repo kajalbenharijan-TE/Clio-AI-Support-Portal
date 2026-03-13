@@ -10,65 +10,102 @@ export default function TroubleshootingPage() {
   }, []);
 
   const steps = [
-    { title: "Account ID Audit", detail: "Search email in Admin Panel. Identify correct Account ID and User ID." },
-    { title: "Define the End Goal", detail: "State what the user is trying to achieve vs actual behavior." },
-    { title: "Mapping the Workflow", detail: "List exact steps, browser info, and timestamps." },
-    { title: "Attempt Reproduction", detail: "Try mimic behavior in a Demo Account." },
-    { title: "Linear Check", detail: "Verify if a bug report already exists in Linear." },
-    { title: "Upload Screenshots/Media", detail: "Capture full media screen (including URL). Upload to Google Drive with 'Anyone at Clio' access." },
-    { title: "Portal Resource Check", detail: "Ensure Slack (channels), NotebookLM (internal docs), Letter AI, and Help Center have been searched for existing solutions." }
+    { 
+      title: "Self-Solve First", 
+      detail: "Use Notebook, Letter AI, and your Demo environment. Research first! If it happens in Demo, it's a high-priority wide-scale impact." 
+    },
+    { 
+      title: "Capture Exact Reproduction", 
+      detail: "Create a clear, ordered list of every click the user made to reach the issue." 
+    },
+    { 
+      title: "Collect Full-Screen Media", 
+      detail: "Include the browser URL bar and error messages. Upload to G-Drive. Never say 'I'll grab media later'." 
+    },
+    { 
+      title: "Verify Impacted Account/User", 
+      detail: "Need Account ID + User ID (not just the requester). Crucial for identity/MFA/throttle requests." 
+    },
+    { 
+      title: "Reproduce the Issue Yourself", 
+      detail: "Follow the steps in the customer's account or Demo. Note your findings in 'Attempted Troubleshooting'." 
+    },
+    { 
+      title: "Articulate the Gap", 
+      detail: "Define: 1. The Issue, 2. Expected Behavior, 3. Actual Result." 
+    },
+    { 
+      title: "Fill Consult Template Completely", 
+      detail: "Don't send one-liners. Fill out Title, User, Channel, Screenshare, and Resources Utilized." 
+    },
+    { 
+      title: "Submit to T.E. (Not Devs)", 
+      detail: "TE handles dev questions to document knowledge gaps and protect developer focus." 
+    }
   ];
 
   return (
-    <main className={`min-h-screen py-12 px-4 antialiased font-sans transition-colors duration-500 ${
-      darkMode ? 'bg-[#0F172A] text-slate-200' : 'bg-slate-50 text-slate-900'
-    }`}>
-      <div className="max-w-3xl mx-auto">
-        <a href="/" className={`text-sm font-bold flex items-center gap-2 mb-8 hover:opacity-70 transition-all ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>
-          ← Back to SupportOKTA
-        </a>
+    <main className={`min-h-screen py-12 px-4 transition-colors duration-500 ${darkMode ? 'bg-[#0F172A] text-slate-200' : 'bg-slate-50 text-slate-900'}`}>
+      <div className="max-w-4xl mx-auto">
+        <div className="flex justify-between items-center mb-8">
+          <a href="/" className={`text-sm font-bold flex items-center gap-2 hover:opacity-70 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>
+            ← Back to Dashboard
+          </a>
+          <button 
+            onClick={() => setDarkMode(!darkMode)}
+            className={`px-4 py-2 rounded-full text-[10px] font-bold uppercase border ${darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'}`}
+          >
+            {darkMode ? '☀️ Light' : '🌙 Dark'}
+          </button>
+        </div>
 
-        <div className={`rounded-[2.5rem] p-8 md:p-12 border transition-all duration-300 ${
-          darkMode ? 'bg-slate-800/40 border-slate-700 shadow-2xl' : 'bg-white border-slate-200 shadow-sm'
-        }`}>
-          <header className="mb-12">
-            <h1 className={`text-3xl font-black mb-3 tracking-tight ${darkMode ? 'text-white' : 'text-slate-900'}`}>
-              Troubleshooting <span className="text-blue-500">Workflow</span>
-            </h1>
-            <p className={`text-sm font-medium ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
-              Standard operating procedure for pre-escalation vetting.
-            </p>
-          </header>
+        <header className="mb-12">
+          <h1 className="text-3xl font-black mb-4">T.E. <span className="text-blue-500">Troubleshooting Guide</span></h1>
+          <div className={`p-4 rounded-2xl border ${darkMode ? 'bg-blue-900/20 border-blue-500/30 text-blue-300' : 'bg-blue-50 border-blue-100 text-blue-700'}`}>
+            <p className="text-sm font-medium">💡 Testing in Demo helps TEs evaluate impact. If it breaks there, multiple accounts are likely affected.</p>
+          </div>
+        </header>
 
-          <div className="space-y-8">
-            {steps.map((step, index) => (
-              <div key={index} className="flex gap-6 group">
-                <div className={`flex-shrink-0 w-10 h-10 border rounded-xl flex items-center justify-center font-bold text-sm transition-all duration-300 ${
-                  darkMode ? 'bg-blue-900/30 border-blue-500/30 text-blue-400' : 'bg-blue-50 border-blue-100 text-blue-600'
-                }`}>
-                  {index + 1}
-                </div>
-                <div className={`pb-8 border-b last:border-0 w-full ${darkMode ? 'border-slate-700/50' : 'border-slate-100'}`}>
-                  <h2 className={`text-lg font-bold mb-2 ${darkMode ? 'text-white' : 'text-slate-800'}`}>{step.title}</h2>
-                  <p className={`text-sm leading-relaxed ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>{step.detail}</p>
-                </div>
+        {/* Vertical Stepper */}
+        <div className="space-y-6 mb-12">
+          {steps.map((step, index) => (
+            <div key={index} className={`flex gap-6 p-6 border rounded-3xl transition-all ${darkMode ? 'bg-slate-800/40 border-slate-700' : 'bg-white border-slate-200 shadow-sm'}`}>
+              <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center font-bold ${darkMode ? 'bg-blue-600 text-white' : 'bg-blue-600 text-white'}`}>
+                {index + 1}
+              </div>
+              <div>
+                <h2 className="text-lg font-bold mb-1">{step.title}</h2>
+                <p className="text-sm opacity-80 leading-relaxed">{step.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Quick Checklist Section */}
+        <div className={`p-8 rounded-[2.5rem] border ${darkMode ? 'bg-green-900/10 border-green-500/20' : 'bg-green-50 border-green-200'}`}>
+          <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+            ✅ Quick Checklist Summary
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              "Tested in Demo Environment",
+              "Captured Reproduction Steps",
+              "G-Drive Media (with URL bar)",
+              "Verified Account & User ID",
+              "Reproduced issue yourself",
+              "Full Consult Template filled"
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <input type="checkbox" className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
+                <label className="text-sm font-medium opacity-90">{item}</label>
               </div>
             ))}
           </div>
-
-          <div className={`mt-10 p-8 rounded-3xl border transition-all ${
-            darkMode ? 'bg-amber-950/30 border-amber-500/20' : 'bg-amber-50 border-amber-200'
-          }`}>
-            <h3 className={`font-black flex items-center gap-2 text-xs uppercase tracking-[0.2em] mb-4 ${
-              darkMode ? 'text-amber-400' : 'text-amber-800'
-            }`}>
-              🚨 T.E. Readiness Check
-            </h3>
-            <p className={`text-sm font-medium ${darkMode ? 'text-amber-100/70' : 'text-amber-900'}`}>
-              Escalate to Technical Support **only** after all 7 steps are complete. Consults missing G-Drive media or portal resource verification will be returned.
-            </p>
-          </div>
         </div>
+        
+        <footer className="mt-12 text-center opacity-40 text-[10px] font-bold uppercase tracking-widest">
+          Incomplete consults will be returned to the agent for further troubleshooting.
+        </footer>
       </div>
     </main>
   );
