@@ -3,46 +3,53 @@ import { useState, useEffect } from 'react';
 
 export default function TroubleshootingPage() {
   const [darkMode, setDarkMode] = useState(true);
+  
+  // State for the Consult Builder
+  const [issue, setIssue] = useState("");
+  const [expected, setExpected] = useState("");
+  const [mediaUrl, setMediaUrl] = useState("");
+  const [accountId, setAccountId] = useState("");
+  const [checkedSteps, setCheckedSteps] = useState<string[]>([]);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light') setDarkMode(false);
   }, []);
 
-  const steps = [
-    { 
-      title: "Self-Solve First", 
-      detail: "Use Notebook, Letter AI, and your Demo environment. Research first! If it happens in Demo, it's a high-priority wide-scale impact." 
-    },
-    { 
-      title: "Capture Exact Reproduction", 
-      detail: "Create a clear, ordered list of every click the user made to reach the issue." 
-    },
-    { 
-      title: "Collect Full-Screen Media", 
-      detail: "Include the browser URL bar and error messages. Upload to G-Drive. Never say 'I'll grab media later'." 
-    },
-    { 
-      title: "Verify Impacted Account/User", 
-      detail: "Need Account ID + User ID (not just the requester). Crucial for identity/MFA/throttle requests." 
-    },
-    { 
-      title: "Reproduce the Issue Yourself", 
-      detail: "Follow the steps in the customer's account or Demo. Note your findings in 'Attempted Troubleshooting'." 
-    },
-    { 
-      title: "Articulate the Gap", 
-      detail: "Define: 1. The Issue, 2. Expected Behavior, 3. Actual Result." 
-    },
-    { 
-      title: "Fill Consult Template Completely", 
-      detail: "Don't send one-liners. Fill out Title, User, Channel, Screenshare, and Resources Utilized." 
-    },
-    { 
-      title: "Submit to T.E. (Not Devs)", 
-      detail: "TE handles dev questions to document knowledge gaps and protect developer focus." 
-    }
+  const troubleshootingSteps = [
+    "Tested in Demo Environment",
+    "Searched Notebook / Letter AI",
+    "Reproduced in Customer Account",
+    "Verified Browser/Version",
+    "Cleared Cache/Cookies",
+    "Checked Linear for existing bugs"
   ];
+
+  const handleCheck = (step: string) => {
+    setCheckedSteps(prev => 
+      prev.includes(step) ? prev.filter(s => s !== step) : [...prev, step]
+    );
+  };
+
+  // The "Magic" script generator
+  const generateScript = () => {
+    const script = `
+*TE CONSULT REQUEST*
+──────────────────────────────
+*Issue:* ${issue || "Not provided"}
+*Expected Behavior:* ${expected || "Not provided"}
+*Account ID:* ${accountId || "Not provided"}
+*Media (G-Drive):* ${mediaUrl || "Not provided"}
+
+*Troubleshooting Performed:*
+${checkedSteps.map(s => `✅ ${s}`).join('\n') || "No steps selected"}
+
+*Status:* Ready for TE Review
+    `.trim();
+
+    navigator.clipboard.writeText(script);
+    alert("Consult Script copied to clipboard! Paste it into Slack or Salesforce.");
+  };
 
   return (
     <main className={`min-h-screen py-12 px-4 transition-colors duration-500 ${darkMode ? 'bg-[#0F172A] text-slate-200' : 'bg-slate-50 text-slate-900'}`}>
@@ -51,61 +58,90 @@ export default function TroubleshootingPage() {
           <a href="/" className={`text-sm font-bold flex items-center gap-2 hover:opacity-70 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>
             ← Back to Dashboard
           </a>
-          <button 
-            onClick={() => setDarkMode(!darkMode)}
-            className={`px-4 py-2 rounded-full text-[10px] font-bold uppercase border ${darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'}`}
-          >
-            {darkMode ? '☀️ Light' : '🌙 Dark'}
-          </button>
         </div>
 
         <header className="mb-12">
-          <h1 className="text-3xl font-black mb-4">T.E. <span className="text-blue-500">Troubleshooting Guide</span></h1>
-          <div className={`p-4 rounded-2xl border ${darkMode ? 'bg-blue-900/20 border-blue-500/30 text-blue-300' : 'bg-blue-50 border-blue-100 text-blue-700'}`}>
-            <p className="text-sm font-medium">💡 Testing in Demo helps TEs evaluate impact. If it breaks there, multiple accounts are likely affected.</p>
-          </div>
+          <h1 className="text-3xl font-black mb-2">Consult <span className="text-blue-500">Builder</span></h1>
+          <p className="text-sm opacity-60">Complete the fields below to generate your TE Consult script.</p>
         </header>
 
-        {/* Vertical Stepper */}
-        <div className="space-y-6 mb-12">
-          {steps.map((step, index) => (
-            <div key={index} className={`flex gap-6 p-6 border rounded-3xl transition-all ${darkMode ? 'bg-slate-800/40 border-slate-700' : 'bg-white border-slate-200 shadow-sm'}`}>
-              <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center font-bold ${darkMode ? 'bg-blue-600 text-white' : 'bg-blue-600 text-white'}`}>
-                {index + 1}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Left Side: Inputs */}
+          <div className="space-y-6">
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-widest mb-2 opacity-70">Describe the Issue</label>
+              <textarea 
+                value={issue}
+                onChange={(e) => setIssue(e.target.value)}
+                placeholder="What is happening?"
+                className={`w-full p-4 rounded-2xl border bg-transparent text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}
+                rows={3}
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-widest mb-2 opacity-70">Expected Behavior</label>
+              <input 
+                type="text"
+                value={expected}
+                onChange={(e) => setExpected(e.target.value)}
+                placeholder="What should happen?"
+                className={`w-full p-4 rounded-2xl border bg-transparent text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}
+              />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-widest mb-2 opacity-70">Account ID</label>
+                <input 
+                  type="text"
+                  value={accountId}
+                  onChange={(e) => setAccountId(e.target.value)}
+                  className={`w-full p-4 rounded-2xl border bg-transparent text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}
+                />
               </div>
               <div>
-                <h2 className="text-lg font-bold mb-1">{step.title}</h2>
-                <p className="text-sm opacity-80 leading-relaxed">{step.detail}</p>
+                <label className="block text-xs font-bold uppercase tracking-widest mb-2 opacity-70">G-Drive Link</label>
+                <input 
+                  type="text"
+                  value={mediaUrl}
+                  onChange={(e) => setMediaUrl(e.target.value)}
+                  placeholder="https://..."
+                  className={`w-full p-4 rounded-2xl border bg-transparent text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}
+                />
               </div>
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* Quick Checklist Section */}
-        <div className={`p-8 rounded-[2.5rem] border ${darkMode ? 'bg-green-900/10 border-green-500/20' : 'bg-green-50 border-green-200'}`}>
-          <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-            ✅ Quick Checklist Summary
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              "Tested in Demo Environment",
-              "Captured Reproduction Steps",
-              "G-Drive Media (with URL bar)",
-              "Verified Account & User ID",
-              "Reproduced issue yourself",
-              "Full Consult Template filled"
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <input type="checkbox" className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
-                <label className="text-sm font-medium opacity-90">{item}</label>
-              </div>
-            ))}
+          {/* Right Side: Troubleshooting Checklist */}
+          <div className={`p-8 rounded-[2.5rem] border ${darkMode ? 'bg-slate-800/40 border-slate-700' : 'bg-white border-slate-200 shadow-sm'}`}>
+            <h3 className="font-bold mb-6 flex items-center gap-2">Troubleshooting Steps</h3>
+            <div className="space-y-4">
+              {troubleshootingSteps.map((step) => (
+                <label key={step} className="flex items-center gap-3 cursor-pointer group">
+                  <input 
+                    type="checkbox" 
+                    onChange={() => handleCheck(step)}
+                    className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500" 
+                  />
+                  <span className="text-sm opacity-80 group-hover:opacity-100 transition-opacity">{step}</span>
+                </label>
+              ))}
+            </div>
+
+            <button 
+              onClick={generateScript}
+              disabled={!issue || !accountId}
+              className={`mt-8 w-full py-4 rounded-2xl font-bold uppercase tracking-widest text-xs transition-all ${
+                issue && accountId 
+                ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-500/20' 
+                : 'bg-slate-700 text-slate-500 cursor-not-allowed'
+              }`}
+            >
+              🚀 Generate & Copy Script
+            </button>
           </div>
         </div>
-        
-        <footer className="mt-12 text-center opacity-40 text-[10px] font-bold uppercase tracking-widest">
-          Incomplete consults will be returned to the agent for further troubleshooting.
-        </footer>
       </div>
     </main>
   );
