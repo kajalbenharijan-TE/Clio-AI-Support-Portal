@@ -11,6 +11,32 @@ export default function HelpGuide() {
 
   const guides = [
     {
+      title: "De-Escalation & Tone",
+      icon: "📣",
+      letterAiUrl: "https://app.letter.ai/preview-content?contentId=bea79fe7-690d-4eee-a16f-87d6f0284941",
+      gemLink: "https://gemini.google.com/gem/1UMOuiOf2kvFPj39yibtsZ5aqrtBiOB-g?usp=sharing",
+      points: [
+        "Tone: Slow down speaking pace; use verbal pauses.",
+        "Goal: Address Practical (Bug/Bill) AND Emotional needs.",
+        "Safety: End call for racism, sexism, or personal abuse.",
+        "Ask: 'What is the main outcome you're hoping for today?'"
+      ],
+      hasTalkTrack: true
+    },
+    {
+      title: "Subs & Cancellations",
+      icon: "💳",
+      letterAiUrl: "https://app.letter.ai/preview-content/custom-content?contentId=ad51e89f-bc4c-466c-817e-32dac89d4d0d",
+      gemLink: "https://gemini.google.com/gem/1UMOuiOf2kvFPj39yibtsZ5aqrtBiOB-g?usp=sharing",
+      points: [
+        "Verify: Support Code + Admin/Owner status mandatory.",
+        "Cancellations: Handoff to Retention via Salesforce Swarm.",
+        "Refunds: Strict no-refund policy (Firm but compassionate).",
+        "Don'ts: Do not process or confirm cancellations yourself."
+      ],
+      proTip: "Manual billing (ACH/Cheque) issues go to AR team."
+    },
+    {
       title: "QuickBooks Online (QBO)",
       icon: "⚙️",
       letterAiUrl: "https://app.letter.ai/preview-content?contentId=c0256c55-7bfb-419e-ab55-9b7676e39e7f",
@@ -47,7 +73,7 @@ export default function HelpGuide() {
         "Syncing: Local changes update Clio instantly.",
         "Conflicts: Check the 'Conflict' folder for version overlaps."
       ],
-      proTip: "Do not store active Database files (.pst, .backup) here."
+      proTip: "Do not store active Database files (.pst) here."
     },
     {
       title: "Clio Accounting",
@@ -60,14 +86,14 @@ export default function HelpGuide() {
         "Checks: Supports manual and batch check printing.",
         "Scope: Built-in general ledger management for firms."
       ],
-      proTip: "Verify 'Opening Balances' before enabling bank sync."
+      proTip: "Verify 'Opening Balances' before bank sync."
     }
   ];
 
   const copyTalkTrack = () => {
     const text = "Unfortunately, I'm not going to be able to continue this conversation at this time. I'll escalate this request to a manager for follow-up. Have a good day.";
     navigator.clipboard.writeText(text);
-    alert("Talk Track Copied!");
+    alert("Abusive Conduct Talk Track Copied!");
   };
 
   return (
@@ -77,57 +103,48 @@ export default function HelpGuide() {
           <a href="/" className={`text-sm font-bold flex items-center gap-2 hover:opacity-70 transition-all ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>
             ← Back to Dashboard
           </a>
-          <button onClick={() => setDarkMode(!darkMode)} className="p-2 text-xs uppercase font-bold tracking-widest border rounded-lg">
+          <button onClick={() => setDarkMode(!darkMode)} className="p-2 text-[10px] font-bold border rounded-lg">
             {darkMode ? '☀️ Light' : '🌙 Dark'}
           </button>
         </div>
 
         <header className="mb-12 text-center">
           <h1 className="text-4xl font-black mb-3">Help <span className="text-blue-500">Guides</span></h1>
-          <p className="text-sm opacity-60">Internal Battle Cards & Documentation Links</p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {guides.map((guide, index) => (
-            <div key={index} className={`p-8 border rounded-[2.5rem] flex flex-col transition-all duration-300 ${
+            <div key={index} className={`p-6 border rounded-[2rem] flex flex-col transition-all duration-300 ${
               darkMode ? 'bg-slate-800/40 border-slate-700 shadow-xl' : 'bg-white border-slate-200 shadow-sm'
             }`}>
-              <div className="flex items-center gap-4 mb-6">
-                <span className="text-4xl">{guide.icon}</span>
-                <h2 className="text-xl font-bold">{guide.title}</h2>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-3xl">{guide.icon}</span>
+                <h2 className="text-lg font-bold leading-tight">{guide.title}</h2>
               </div>
               
-              <ul className="space-y-4 mb-6 flex-grow">
+              <ul className="space-y-3 mb-6 flex-grow">
                 {guide.points.map((point, j) => (
-                  <li key={j} className="flex items-start gap-3">
-                    <span className="text-blue-500 mt-1.5">•</span>
-                    <p className="text-sm leading-relaxed opacity-90">{point}</p>
+                  <li key={j} className="flex items-start gap-2 text-xs leading-relaxed opacity-90">
+                    <span className="text-blue-500">•</span>
+                    {point}
                   </li>
                 ))}
               </ul>
 
-              <div className={`mb-6 p-3 rounded-xl text-[10px] font-bold uppercase ${
-                darkMode ? 'bg-blue-900/20 text-blue-400' : 'bg-blue-50 text-blue-700'
-              }`}>
-                💡 PRO-TIP: {guide.proTip}
-              </div>
-
-              <div className="flex flex-col gap-3">
-                <a 
-                  href={guide.gemLink} 
-                  target="_blank" 
-                  className={`w-full py-2.5 text-center text-[10px] font-bold uppercase tracking-widest rounded-xl border transition-all ${
-                    darkMode ? 'bg-emerald-600/10 text-emerald-400 border-emerald-500/20 hover:bg-emerald-600 hover:text-white' : 'bg-emerald-50 text-emerald-700 border-emerald-100 hover:bg-emerald-600 hover:text-white'
-                  }`}
-                >
-                  💎 View Gem Resource
+              <div className="flex flex-col gap-2">
+                {guide.hasTalkTrack && (
+                  <button 
+                    onClick={copyTalkTrack}
+                    className="w-full py-2 text-[9px] font-bold uppercase bg-amber-600/10 text-amber-500 border border-amber-500/20 rounded-lg hover:bg-amber-600 hover:text-white transition-all"
+                  >
+                    📋 Copy Warning Script
+                  </button>
+                )}
+                <a href={guide.gemLink} target="_blank" className="w-full py-2 text-center text-[9px] font-bold uppercase bg-emerald-600/10 text-emerald-400 border border-emerald-500/20 rounded-lg hover:bg-emerald-600 hover:text-white">
+                  💎 View Gem
                 </a>
-                <a 
-                  href={guide.letterAiUrl} 
-                  target="_blank" 
-                  className="w-full py-3 text-center text-[10px] font-bold uppercase tracking-widest bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all"
-                >
-                  Open Letter AI Playbook ↗
+                <a href={guide.letterAiUrl} target="_blank" className="w-full py-2.5 text-center text-[9px] font-bold uppercase bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                  Open Playbook ↗
                 </a>
               </div>
             </div>
