@@ -10,7 +10,7 @@ export default function SupportOKTA() {
   }, []);
 
   const apps = [
-    { name: "Troubleshooting", url: "/troubleshooting", icon: "🛠️", description: "Diagnostic guide and T.E. builder." },
+    { name: "Troubleshooting", url: "/troubleshooting", icon: "🛠️", description: "Diagnostic guide and T.E Consult builder." },
     { name: "Salesforce", url: "https://themis-solutions.lightning.force.com/lightning/o/Case/list?", icon: "/salesforce .png", description: "Case volume and account management." },
     { name: "Notebook", url: "https://notebooklm.google.com/", icon: "📓", description: "AI research assistant for deep docs." },
     { name: "Letter AI", url: "https://app.letter.ai/sso/clio", icon: "/Letter_AI.png", description: "Playbooks and talk-track generation." },
