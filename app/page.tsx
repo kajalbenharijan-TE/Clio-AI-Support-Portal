@@ -23,17 +23,23 @@ export default function SupportOKTA() {
       description: "Step-by-step diagnostic guide and interactive T.E. consult builder." 
     },
     { name: "Salesforce", url: "https://clio.lightning.force.com/", icon: "/salesforce .png", description: "Case volume and account management." },
-    { 
-      name: "Help Guide", 
-      url: "/guide", 
-      icon: "📚", 
-      description: "Quick-reference tiles for Accounting, Subs, and De-escalation SOPs." 
+     { 
+      name: "CSQL", 
+      url: "/CSQL", 
+      icon: "🎯", 
+      description: "Refer to this tile for GameCards for CSQLs." 
     },
     { 
       name: "Notebook", 
       url: "https://notebooklm.google.com/", 
       icon: "📓", 
       description: "AI-powered deep research assistant for internal documents & slack threads." 
+    },
+    { 
+      name: "Help Guide", 
+      url: "/guide", 
+      icon: "📚", 
+      description: "Quick-reference tiles for Accounting, Subs, and De-escalation SOPs." 
     },
     { 
       name: "Letter AI", 
@@ -52,13 +58,7 @@ export default function SupportOKTA() {
       url: "https://help.clio.com", 
       icon: "❓", 
       description: "Official Clio Knowledge Base for public product features." 
-    },
-    { 
-      name: "CSQL", 
-      url: "/CSQL", 
-      icon: "🎯", 
-      description: "Refer to this tile for GameCards for CSQLs." 
-    },
+    }, 
     { name: "Linear", url: "https://linear.app/clio", icon: "/Linear.png", description: "Bug tracking and engineering sprints." }
   ];
 
