@@ -16,74 +16,78 @@ export default function SupportOKTA() {
   };
 
   const apps = [
-    { name: "Troubleshooting", url: "/troubleshooting", icon: "🛠️", description: "Diagnostic guide and T.E. builder." },
+    { name: "Troubleshooting", url: "/troubleshooting", icon: "🛠️", description: "Diagnostic guide & T.E. builder." },
     { name: "Help Guide", url: "/guide", icon: "📚", description: "Accounting, Subs, and SOP tiles." },
-    { name: "Notebook", url: "https://notebooklm.google.com/", icon: "📓", description: "AI research assistant for deep docs." },
-    { name: "Letter AI", url: "https://app.letter.ai", icon: "/Letter_AI.png", description: "Playbooks and talk-track generation." },
-    { name: "Slack", url: "https://clio.slack.com", icon: "/Slack.png", description: "Team communication and swarming." },
-    { name: "Help Center", url: "https://help.clio.com", icon: "❓", description: "Official public Knowledge Base." },
+    { name: "Notebook", url: "https://notebooklm.google.com/", icon: "📓", description: "AI research for internal docs." },
+    { name: "Letter AI", url: "https://app.letter.ai/sso/clio", icon: "/Letter_AI.png", description: "Playbooks & talk-tracks." },
+    { name: "Slack", url: "https://clio.slack.com", icon: "/Slack.png", description: "Team communication." },
+    { name: "Help Center", url: "https://help.clio.com", icon: "❓", description: "Public Knowledge Base." },
+    { name: "Salesforce", url: "https://clio.lightning.force.com/", icon: "☁️", description: "CRM and Case Management." },
+    { name: "Linear", url: "https://linear.app/clio", icon: "📐", description: "Bug tracking and engineering." },
     { name: "CSQL", url: "/csql", icon: "🎯", description: "Clio CSQL Product Game Cards." }
   ];
 
   return (
-    <main className={`min-h-screen py-12 px-6 transition-colors duration-500 ${
+    <main className={`min-h-screen py-8 px-6 transition-colors duration-500 ${
       darkMode ? 'bg-[#0F172A] text-slate-200' : 'bg-slate-50 text-slate-900'
     }`}>
       <div className="max-w-[1600px] mx-auto">
         
-        {/* Header Section */}
-        <div className="flex justify-between items-center mb-16">
-          <h1 className={`text-5xl font-black tracking-tighter ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+        <div className="flex justify-between items-center mb-10">
+          <h1 className={`text-3xl font-black tracking-tighter ${darkMode ? 'text-white' : 'text-slate-900'}`}>
             SUPPORT<span className="text-blue-600">OKTA</span>
           </h1>
-          <button onClick={toggleTheme} className={`p-3 rounded-2xl border-2 transition-all ${
-            darkMode ? 'bg-slate-800 border-slate-700 text-yellow-400' : 'bg-white border-slate-200 text-slate-600 shadow-sm'
+          <button onClick={toggleTheme} className={`p-2 px-4 rounded-xl border-2 font-bold text-xs transition-all ${
+            darkMode ? 'bg-slate-800 border-slate-700 text-yellow-400' : 'bg-white border-slate-200 text-slate-600'
           }`}>
-            {darkMode ? '☀️' : '🌙'}
+            {darkMode ? '☀️ LIGHT MODE' : '🌙 DARK MODE'}
           </button>
         </div>
 
-        {/* Large Tile Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-7 gap-6">
+        {/* 9-Tile Grid: Adjusted sizing to fit screen better */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-9 gap-4">
           {apps.map((app) => (
             <a 
               key={app.name} 
               href={app.url} 
               target={app.url.startsWith('http') ? "_blank" : "_self"} 
-              className={`group flex flex-col items-center p-10 border-2 rounded-[2.5rem] transition-all duration-300 text-center min-h-[420px] justify-between ${
+              className={`group flex flex-col items-center p-6 border-2 rounded-[2rem] transition-all duration-300 text-center min-h-[360px] justify-between ${
                 darkMode 
-                  ? 'bg-slate-800/40 border-slate-700 hover:border-blue-500 hover:bg-slate-800 shadow-2xl' 
-                  : 'bg-white border-slate-100 hover:border-blue-500 shadow-xl shadow-slate-200/50'
-              } hover:-translate-y-2`}
+                  ? 'bg-slate-800/40 border-slate-700 hover:border-blue-500 hover:bg-slate-800 shadow-xl' 
+                  : 'bg-white border-slate-100 hover:border-blue-500 shadow-lg shadow-slate-200/40'
+              } hover:-translate-y-1`}
             >
               <div className="flex flex-col items-center w-full">
-                <div className="flex items-center justify-center w-24 h-24 mb-8 group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-center justify-center w-16 h-16 mb-6 group-hover:scale-110 transition-transform">
                   {app.icon.startsWith('/') ? (
-                    <img src={app.icon} className="max-h-full max-w-full object-contain filter drop-shadow-sm" alt="" />
+                    <img src={app.icon} className="max-h-full max-w-full object-contain" alt="" />
                   ) : (
-                    <span className="text-6xl drop-shadow-md">{app.icon}</span>
+                    <span className="text-4xl drop-shadow-sm">{app.icon}</span>
                   )}
                 </div>
                 
-                {/* Fixed Contrast Text */}
-                <h2 className={`text-2xl font-black mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                <h2 className={`text-lg font-black mb-3 leading-tight ${darkMode ? 'text-white' : 'text-slate-900'}`}>
                   {app.name}
                 </h2>
-                <p className={`text-sm leading-relaxed font-medium px-2 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                <p className={`text-[11px] leading-relaxed font-semibold ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                   {app.description}
                 </p>
               </div>
 
-              <div className={`mt-8 w-full py-4 text-xs font-black uppercase tracking-widest border-2 rounded-2xl transition-all ${
+              <div className={`mt-6 w-full py-3 text-[9px] font-black uppercase tracking-widest border-2 rounded-xl transition-all ${
                 darkMode 
                   ? 'bg-blue-600 border-blue-600 text-white group-hover:bg-blue-500' 
                   : 'bg-slate-900 border-slate-900 text-white group-hover:bg-blue-600 group-hover:border-blue-600'
               }`}>
-                {app.url.startsWith('/') ? "Enter →" : "Launch ↗"}
+                {app.url.startsWith('/') ? "Open" : "Launch ↗"}
               </div>
             </a>
           ))}
         </div>
+
+        <footer className="mt-12 text-center opacity-20">
+          <p className="text-[10px] font-bold tracking-[0.3em]">CLIO SUPPORT PORTAL // 9 ACTIVE MODULES</p>
+        </footer>
       </div>
     </main>
   );
