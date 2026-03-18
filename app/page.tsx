@@ -54,7 +54,7 @@ export default function SupportOKTA() {
     },
     { 
       name: "CSQL", 
-      url: "https://clio.lightning.force.com/", 
+      url: "/csql", 
       icon: "🎯", 
       description: "Submit Sales leads for plan upgrades and expansions discovered on calls." 
     }
