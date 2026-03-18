@@ -22,7 +22,12 @@ export default function SupportOKTA() {
       icon: "🛠️", 
       description: "Step-by-step diagnostic guide and interactive T.E. consult builder." 
     },
-    { name: "Salesforce", url: "https://clio.lightning.force.com/", icon: "/salesforce .png", description: "Case volume and account management." },
+    { 
+      name: "Help Guide", 
+      url: "/guide", 
+      icon: "📚", 
+      description: "Quick-reference tiles for Accounting, Subs, and De-escalation SOPs." 
+    },
      { 
       name: "CSQL", 
       url: "/CSQL", 
@@ -36,17 +41,12 @@ export default function SupportOKTA() {
       description: "AI-powered deep research assistant for internal documents & slack threads." 
     },
     { 
-      name: "Help Guide", 
-      url: "/guide", 
-      icon: "📚", 
-      description: "Quick-reference tiles for Accounting, Subs, and De-escalation SOPs." 
-    },
-    { 
       name: "Letter AI", 
       url: "https://app.letter.ai", 
       icon: "/Letter_AI.png", 
       description: "Internal playbooks, sales content, and talk-tracks." 
     },
+    { name: "Salesforce", url: "https://clio.lightning.force.com/", icon: "/salesforce .png", description: "Case volume and account management." },
     { 
       name: "Slack", 
       url: "https://clio.slack.com", 
