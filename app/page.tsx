@@ -16,77 +16,120 @@ export default function SupportOKTA() {
   };
 
   const apps = [
-    { name: "Troubleshooting", url: "/troubleshooting", icon: "🛠️", description: "Diagnostic guide & T.E. builder." },
-    { name: "Help Guide", url: "/guide", icon: "📚", description: "Accounting, Subs, and SOP tiles." },
-    { name: "Notebook", url: "https://notebooklm.google.com/", icon: "📓", description: "AI research for internal docs." },
-    { name: "Letter AI", url: "https://app.letter.ai/sso/clio", icon: "/Letter_AI.png", description: "Playbooks & talk-tracks." },
-    { name: "Slack", url: "https://clio.slack.com", icon: "/Slack.png", description: "Team communication." },
-    { name: "Help Center", url: "https://help.clio.com", icon: "❓", description: "Public Knowledge Base." },
-    { name: "Salesforce", url: "https://clio.lightning.force.com/", icon: "☁️", description: "CRM and Case Management." },
-    { name: "Linear", url: "https://linear.app/clio", icon: "📐", description: "Bug tracking and engineering." },
-    { name: "CSQL", url: "/csql", icon: "🎯", description: "Clio CSQL Product Game Cards." }
+    { 
+      name: "Troubleshooting", 
+      url: "/troubleshooting", 
+      icon: "🛠️", 
+      description: "Step-by-step diagnostic guide and interactive T.E. consult builder." 
+    },
+    { name: "Salesforce", url: "https://clio.lightning.force.com/", icon: "/salesforce .png", description: "Case volume and account management." },
+    { 
+      name: "Help Guide", 
+      url: "/guide", 
+      icon: "📚", 
+      description: "Quick-reference tiles for Accounting, Subs, and De-escalation SOPs." 
+    },
+    { 
+      name: "Notebook", 
+      url: "https://notebooklm.google.com/", 
+      icon: "📓", 
+      description: "AI-powered deep research assistant for internal documents & slack threads." 
+    },
+    { 
+      name: "Letter AI", 
+      url: "https://app.letter.ai", 
+      icon: "/Letter_AI.png", 
+      description: "Internal playbooks, sales content, and talk-tracks." 
+    },
+    { 
+      name: "Slack", 
+      url: "https://clio.slack.com", 
+      icon: "/Slack.png", 
+      description: "Real-time team communication and technical swarming." 
+    },
+    { 
+      name: "Help Center", 
+      url: "https://help.clio.com", 
+      icon: "❓", 
+      description: "Official Clio Knowledge Base for public product features." 
+    },
+    { 
+      name: "CSQL", 
+      url: "/csql", 
+      icon: "🎯", 
+      description: "Refer to this tile for GameCards for CSQLs." 
+    },
+    { name: "Linear", url: "https://linear.app/clio", icon: "/Linear.png", description: "Bug tracking and engineering sprints." }
   ];
 
   return (
-    <main className={`min-h-screen py-8 px-6 transition-colors duration-500 ${
+    <main className={`min-h-screen py-10 px-6 transition-colors duration-500 antialiased ${
       darkMode ? 'bg-[#0F172A] text-slate-200' : 'bg-slate-50 text-slate-900'
     }`}>
       <div className="max-w-[1600px] mx-auto">
         
-        <div className="flex justify-between items-center mb-10">
-          <h1 className={`text-3xl font-black tracking-tighter ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+        {/* Fancy Header & Theme Toggle */}
+        <div className="flex justify-between items-center mb-16">
+          <h1 className={`text-4xl font-black tracking-tighter ${darkMode ? 'text-white' : 'text-slate-900'}`}>
             SUPPORT<span className="text-blue-600">OKTA</span>
           </h1>
-          <button onClick={toggleTheme} className={`p-2 px-4 rounded-xl border-2 font-bold text-xs transition-all ${
-            darkMode ? 'bg-slate-800 border-slate-700 text-yellow-400' : 'bg-white border-slate-200 text-slate-600'
-          }`}>
-            {darkMode ? '☀️ LIGHT MODE' : '🌙 DARK MODE'}
+          <button 
+            onClick={toggleTheme} 
+            className={`px-5 py-2.5 rounded-2xl border-2 font-bold text-[10px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 ${
+              darkMode ? 'bg-slate-800 border-slate-700 text-blue-400 shadow-lg shadow-blue-500/10' : 'bg-white border-slate-200 text-slate-600 shadow-md'
+            }`}
+          >
+            {darkMode ? '☀️ Light' : '🌙 Dark'}
           </button>
         </div>
 
-        {/* 9-Tile Grid: Adjusted sizing to fit screen better */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-9 gap-4">
+        {/* Updated Grid: Forces 5 per row on desktop */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {apps.map((app) => (
             <a 
               key={app.name} 
               href={app.url} 
               target={app.url.startsWith('http') ? "_blank" : "_self"} 
-              className={`group flex flex-col items-center p-6 border-2 rounded-[2rem] transition-all duration-300 text-center min-h-[360px] justify-between ${
+              className={`group relative flex flex-col items-center p-8 border-2 rounded-[2.5rem] transition-all duration-300 text-center min-h-[380px] hover:-translate-y-2 ${
                 darkMode 
-                  ? 'bg-slate-800/40 border-slate-700 hover:border-blue-500 hover:bg-slate-800 shadow-xl' 
-                  : 'bg-white border-slate-100 hover:border-blue-500 shadow-lg shadow-slate-200/40'
-              } hover:-translate-y-1`}
+                  ? 'bg-slate-800/40 border-slate-700 hover:border-blue-500/50 hover:bg-slate-800 shadow-2xl shadow-black/20' 
+                  : 'bg-white border-slate-100 hover:border-blue-500 shadow-xl shadow-slate-200/60'
+              }`}
             >
-              <div className="flex flex-col items-center w-full">
-                <div className="flex items-center justify-center w-16 h-16 mb-6 group-hover:scale-110 transition-transform">
-                  {app.icon.startsWith('/') ? (
-                    <img src={app.icon} className="max-h-full max-w-full object-contain" alt="" />
-                  ) : (
-                    <span className="text-4xl drop-shadow-sm">{app.icon}</span>
-                  )}
-                </div>
-                
-                <h2 className={`text-lg font-black mb-3 leading-tight ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+              {/* Icon Container with subtle glow on hover */}
+              <div className="flex items-center justify-center w-24 h-24 mb-8 relative transition-transform duration-500 group-hover:scale-110">
+                <div className={`absolute inset-0 blur-2xl rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${darkMode ? 'bg-blue-400' : 'bg-blue-600'}`}></div>
+                {app.icon.startsWith('/') ? (
+                  <img src={app.icon} alt={app.name} className="max-h-full max-w-full object-contain relative z-10" />
+                ) : (
+                  <span className="text-6xl relative z-10 drop-shadow-sm">{app.icon}</span>
+                )}
+              </div>
+              
+              <div className="flex flex-col flex-grow">
+                <h2 className={`text-xl font-black mb-3 leading-tight ${darkMode ? 'text-white' : 'text-slate-900'}`}>
                   {app.name}
                 </h2>
-                <p className={`text-[11px] leading-relaxed font-semibold ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                <p className={`text-[12px] leading-relaxed font-medium px-2 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                   {app.description}
                 </p>
               </div>
-
-              <div className={`mt-6 w-full py-3 text-[9px] font-black uppercase tracking-widest border-2 rounded-xl transition-all ${
+              
+              {/* Refined Action Button */}
+              <div className={`mt-8 w-full py-3 text-[10px] font-black uppercase tracking-[0.15em] border-2 rounded-2xl transition-all duration-300 ${
                 darkMode 
-                  ? 'bg-blue-600 border-blue-600 text-white group-hover:bg-blue-500' 
-                  : 'bg-slate-900 border-slate-900 text-white group-hover:bg-blue-600 group-hover:border-blue-600'
+                  ? 'bg-blue-600 border-blue-600 text-white group-hover:bg-blue-500 group-hover:border-blue-500 shadow-lg shadow-blue-900/40' 
+                  : 'bg-slate-900 border-slate-900 text-white group-hover:bg-blue-600 group-hover:border-blue-600 shadow-lg'
               }`}>
-                {app.url.startsWith('/') ? "Open" : "Launch ↗"}
+                {app.url.startsWith('/') ? "View Guide" : "Launch"}
               </div>
             </a>
           ))}
         </div>
 
-        <footer className="mt-12 text-center opacity-20">
-          <p className="text-[10px] font-bold tracking-[0.3em]">CLIO SUPPORT PORTAL // 9 ACTIVE MODULES</p>
+        {/* Subtle Footer Decor */}
+        <footer className="mt-20 text-center opacity-20 pointer-events-none">
+          <p className="text-[10px] font-bold tracking-[0.5em] uppercase">Clio CS Excellence // Internal Ops</p>
         </footer>
       </div>
     </main>
