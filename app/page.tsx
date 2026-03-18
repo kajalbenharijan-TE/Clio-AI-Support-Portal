@@ -26,7 +26,7 @@ export default function SupportOKTA() {
     { 
       name: "Salesforce", 
       url: "https://themis-solutions.lightning.force.com/lightning/o/Case/list?", 
-      icon: "/salesforce.png", 
+      icon: "/salesforce .png", 
       description: "Customer case volume and account management." 
     },
     { 
