@@ -14,27 +14,27 @@ export default function HelpGuide() {
       title: "De-Escalation & Tone",
       icon: "📣",
       letterAiUrl: "https://app.letter.ai/preview-content?contentId=bea79fe7-690d-4eee-a16f-87d6f0284941",
-      gemLink: "https://gemini.google.com/gem/1UMOuiOf2kvFPj39yibtsZ5aqrtBiOB-g?usp=sharing",
       points: [
         "Tone: Slow down speaking pace; use verbal pauses.",
         "Goal: Address Practical (Bug/Bill) AND Emotional needs.",
         "Safety: End call for racism, sexism, or personal abuse.",
         "Ask: 'What is the main outcome you're hoping for today?'"
       ],
-      hasTalkTrack: true
+      hasTalkTrack: true,
+      showGem: false // Gem removed
     },
     {
       title: "Subs & Cancellations",
       icon: "💳",
       letterAiUrl: "https://app.letter.ai/preview-content/custom-content?contentId=ad51e89f-bc4c-466c-817e-32dac89d4d0d",
-      gemLink: "https://gemini.google.com/gem/1UMOuiOf2kvFPj39yibtsZ5aqrtBiOB-g?usp=sharing",
       points: [
         "Verify: Support Code + Admin/Owner status mandatory.",
         "Cancellations: Handoff to Retention via Salesforce Swarm.",
         "Refunds: Strict no-refund policy (Firm but compassionate).",
         "Don'ts: Do not process or confirm cancellations yourself."
       ],
-      proTip: "Manual billing (ACH/Cheque) issues go to AR team."
+      proTip: "Manual billing (ACH/Cheque) issues go to AR team.",
+      showGem: false // Gem removed
     },
     {
       title: "QuickBooks Online (QBO)",
@@ -47,7 +47,8 @@ export default function HelpGuide() {
         "Sync Flow: Bills & Payments flow Clio → QBO.",
         "Contacts: Only syncs after 1st bill is approved."
       ],
-      proTip: "Essentials plan does NOT support Hard Cost sync."
+      proTip: "Essentials plan does NOT support Hard Cost sync.",
+      showGem: true
     },
     {
       title: "Xero Integration",
@@ -60,7 +61,8 @@ export default function HelpGuide() {
         "Rounding: Xero rounds to 2 decimals (1-cent gaps).",
         "Paid Bills: Do not edit in Clio after they sync."
       ],
-      proTip: "Mapping categories affects NEW invoices only."
+      proTip: "Mapping categories affects NEW invoices only.",
+      showGem: true
     },
     {
       title: "Clio Drive",
@@ -73,7 +75,8 @@ export default function HelpGuide() {
         "Syncing: Local changes update Clio instantly.",
         "Conflicts: Check the 'Conflict' folder for version overlaps."
       ],
-      proTip: "Do not store active Database files (.pst) here."
+      proTip: "Do not store active Database files (.pst) here.",
+      showGem: true
     },
     {
       title: "Clio Accounting",
@@ -86,7 +89,8 @@ export default function HelpGuide() {
         "Checks: Supports manual and batch check printing.",
         "Scope: Built-in general ledger management for firms."
       ],
-      proTip: "Verify 'Opening Balances' before bank sync."
+      proTip: "Verify 'Opening Balances' before bank sync.",
+      showGem: true
     }
   ];
 
@@ -140,9 +144,12 @@ export default function HelpGuide() {
                     📋 Copy Warning Script
                   </button>
                 )}
-                <a href={guide.gemLink} target="_blank" className="w-full py-2 text-center text-[9px] font-bold uppercase bg-emerald-600/10 text-emerald-400 border border-emerald-500/20 rounded-lg hover:bg-emerald-600 hover:text-white">
-                  💎 View Gem
-                </a>
+                {/* Only show Gem button if showGem is true */}
+                {guide.showGem && (
+                  <a href={guide.gemLink} target="_blank" className="w-full py-2 text-center text-[9px] font-bold uppercase bg-emerald-600/10 text-emerald-400 border border-emerald-500/20 rounded-lg hover:bg-emerald-600 hover:text-white">
+                    💎 View Gem
+                  </a>
+                )}
                 <a href={guide.letterAiUrl} target="_blank" className="w-full py-2.5 text-center text-[9px] font-bold uppercase bg-blue-600 text-white rounded-lg hover:bg-blue-700">
                   Open Playbook ↗
                 </a>
