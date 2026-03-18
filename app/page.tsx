@@ -16,6 +16,7 @@ export default function SupportOKTA() {
   };
 
   const apps = [
+    // FIRST ROW (5 TILES)
     { 
       name: "Troubleshooting", 
       url: "/troubleshooting", 
@@ -23,10 +24,10 @@ export default function SupportOKTA() {
       description: "Step-by-step diagnostic guide and interactive T.E. consult builder." 
     },
     { 
-      name: "Help Guide", 
-      url: "/guide", 
-      icon: "📚", 
-      description: "Quick-reference tiles for Accounting, Subs, and De-escalation SOPs." 
+      name: "Salesforce", 
+      url: "https://themis-solutions.lightning.force.com/lightning/o/Case/list?", 
+      icon: "/salesforce.png", 
+      description: "Customer case volume and account management." 
     },
     { 
       name: "Notebook", 
@@ -41,6 +42,13 @@ export default function SupportOKTA() {
       description: "Internal playbooks, sales content, and talk-track generation." 
     },
     { 
+      name: "CSQL", 
+      url: "/CSQL", 
+      icon: "🎯", 
+      description: "Refer to this tile for CSQL Game Cards." 
+    },
+    // SECOND ROW
+    { 
       name: "Slack", 
       url: "https://clio.slack.com", 
       icon: "/Slack.png", 
@@ -53,10 +61,16 @@ export default function SupportOKTA() {
       description: "Official Clio Knowledge Base for public product features." 
     },
     { 
-      name: "CSQL", 
-      url: "/CSQL", 
-      icon: "🎯", 
-      description: "Refer to this tile for CSQL Game Cards." 
+      name: "Help Guide", 
+      url: "/guide", 
+      icon: "📚", 
+      description: "Quick-reference tiles for Accounting, Subs, and De-escalation SOPs." 
+    },
+    { 
+      name: "Linear", 
+      url: "https://linear.app/clio/team/PLA/all", 
+      icon: "/Linear.png", 
+      description: "Bug tracking, feature requests, and engineering sprints." 
     }
   ];
 
@@ -75,8 +89,8 @@ export default function SupportOKTA() {
           </h1>
         </header>
 
-        {/* Responsive Grid adjusted for the new order */}
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7">
+        {/* 5-Column Grid: Row 1 will have 5 items, Row 2 will have the remaining 4 */}
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {apps.map((app) => (
             <a 
               key={app.name} 
