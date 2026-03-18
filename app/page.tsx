@@ -49,7 +49,7 @@ export default function SupportOKTA() {
     { name: "Salesforce", url: "https://clio.lightning.force.com/", icon: "/salesforce .png", description: "Case volume and account management." },
     { 
       name: "Slack", 
-      url: "https://clio.slack.com", 
+      url: "/slack", 
       icon: "/Slack.png", 
       description: "Real-time team communication and technical swarming." 
     },
