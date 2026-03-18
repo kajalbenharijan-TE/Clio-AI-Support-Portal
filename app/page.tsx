@@ -55,7 +55,7 @@ export default function SupportOKTA() {
     },
     { 
       name: "CSQL", 
-      url: "/csql", 
+      url: "/CSQL", 
       icon: "🎯", 
       description: "Refer to this tile for GameCards for CSQLs." 
     },
