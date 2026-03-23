@@ -46,7 +46,7 @@ export default function SupportOKTA() {
       icon: "/Letter_AI.png", 
       description: "Internal playbooks, sales content, and talk-tracks." 
     },
-    { name: "Salesforce", url: "https://clio.lightning.force.com/", icon: "/salesforce .png", description: "Case volume and account management." },
+    { name: "Salesforce", url: "https://themis-solutions.lightning.force.com/lightning", icon: "/salesforce .png", description: "Case volume and account management." },
     { 
       name: "Slack", 
       url: "/Slack", 
