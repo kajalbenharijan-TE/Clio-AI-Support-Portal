@@ -68,10 +68,10 @@ export default function SupportOKTA() {
     }`}>
       <div className="max-w-[1600px] mx-auto">
         
-        {/* Fancy Header & Theme Toggle */}
+        {/* Header Section updated to Support Portal */}
         <div className="flex justify-between items-center mb-16">
           <h1 className={`text-4xl font-black tracking-tighter ${darkMode ? 'text-white' : 'text-slate-900'}`}>
-            SUPPORT<span className="text-blue-600">OKTA</span>
+            SUPPORT<span className="text-blue-600">PORTAL</span>
           </h1>
           <button 
             onClick={toggleTheme} 
@@ -96,7 +96,6 @@ export default function SupportOKTA() {
                   : 'bg-white border-slate-100 hover:border-blue-500 shadow-xl shadow-slate-200/60'
               }`}
             >
-              {/* Icon Container with subtle glow on hover */}
               <div className="flex items-center justify-center w-24 h-24 mb-8 relative transition-transform duration-500 group-hover:scale-110">
                 <div className={`absolute inset-0 blur-2xl rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${darkMode ? 'bg-blue-400' : 'bg-blue-600'}`}></div>
                 {app.icon.startsWith('/') ? (
@@ -115,7 +114,6 @@ export default function SupportOKTA() {
                 </p>
               </div>
               
-              {/* Refined Action Button */}
               <div className={`mt-8 w-full py-3 text-[10px] font-black uppercase tracking-[0.15em] border-2 rounded-2xl transition-all duration-300 ${
                 darkMode 
                   ? 'bg-blue-600 border-blue-600 text-white group-hover:bg-blue-500 group-hover:border-blue-500 shadow-lg shadow-blue-900/40' 
@@ -127,7 +125,6 @@ export default function SupportOKTA() {
           ))}
         </div>
 
-        {/* Subtle Footer Decor */}
         <footer className="mt-20 text-center opacity-20 pointer-events-none">
           <p className="text-[10px] font-bold tracking-[0.5em] uppercase">Clio CS Excellence // Internal Ops</p>
         </footer>
