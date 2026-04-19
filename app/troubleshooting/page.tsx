@@ -8,13 +8,6 @@ type SOPStep = {
   tip: string;
 };
 
-type Template = {
-  id: string;
-  label: string;
-  icon: string;
-  data: { issue: string; expected: string };
-};
-
 export default function TroubleshootingPage() {
   const [darkMode, setDarkMode] = useState(true);
 
@@ -49,24 +42,6 @@ export default function TroubleshootingPage() {
       tip: "One-liners get sent back. TE needs context to escalate efficiently." },
     { id: 's8', title: "Submit to T.E.",        desc: "Consult Tech Esc before going to Devs to document gaps.",
       tip: "T.E. is a filter — skipping them fragments engineering visibility." }
-  ];
-
-  const templates: Template[] = [
-    { id: 't1', label: 'Billing', icon: '💳',
-      data: {
-        issue: 'Invoice total does not match line items when exporting to PDF.',
-        expected: 'Exported invoice totals should match the on-screen subtotal + tax.'
-      } },
-    { id: 't2', label: 'Permissions', icon: '🔒',
-      data: {
-        issue: 'User cannot access matter despite being granted permissions.',
-        expected: 'User with Matter Access permission should be able to view the matter.'
-      } },
-    { id: 't3', label: 'Performance', icon: '⚡',
-      data: {
-        issue: 'Dashboard loads slowly (>15s) for accounts with 500+ matters.',
-        expected: 'Dashboard should load in under 5 seconds regardless of matter count.'
-      } },
   ];
 
   const builderOptions = [
@@ -117,11 +92,6 @@ export default function TroubleshootingPage() {
 
   const toggleSOP = (idx: number) =>
     setCompletedSOP(prev => prev.includes(idx) ? prev.filter(i => i !== idx) : [...prev, idx]);
-
-  const applyTemplate = (tpl: Template) => {
-    setIssue(tpl.data.issue);
-    setExpected(tpl.data.expected);
-  };
 
   const resetAll = () => {
     if (!resetConfirm) {
@@ -197,9 +167,6 @@ ${checkedSteps.length ? checkedSteps.map(s => `✅ ${s}`).join('\n') : '— (non
     input: darkMode
       ? 'bg-slate-950/60 border-white/[0.08] text-white placeholder-slate-500 focus:border-blue-400/60 focus:bg-slate-950 focus:shadow-[0_0_0_3px_rgba(59,130,246,0.15)]'
       : 'bg-slate-50 border-slate-300 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:bg-white',
-    chip: darkMode
-      ? 'bg-white/[0.04] border-white/[0.08] hover:border-blue-400/50 hover:bg-white/[0.06] text-slate-200 hover:shadow-[0_0_20px_-4px_rgba(59,130,246,0.3)]'
-      : 'bg-white border-slate-200 hover:border-blue-500 hover:bg-blue-50/40 text-slate-700',
     checkLabel: darkMode
       ? 'border-white/[0.06] bg-slate-950/40 hover:bg-slate-950/70 hover:border-white/[0.12]'
       : 'border-slate-200 bg-slate-50 hover:bg-white hover:border-blue-300',
@@ -253,10 +220,20 @@ ${checkedSteps.length ? checkedSteps.map(s => `✅ ${s}`).join('\n') : '— (non
           <a href="/" className={`text-sm font-bold flex items-center gap-2 transition-colors ${t.backLink}`}>
             ← Back to Dashboard
           </a>
-          <button onClick={toggleTheme}
-            className={`px-5 py-2.5 rounded-2xl border-2 font-bold text-[10px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 ${t.navBtn}`}>
-            {darkMode ? '☀️ Light' : '🌙 Dark'}
-          </button>
+          <div className="flex items-center gap-2">
+            <button onClick={resetAll}
+              className={`px-4 py-2.5 rounded-2xl border font-bold text-[10px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 ${
+                resetConfirm
+                  ? 'bg-red-500 border-red-500 text-white hover:bg-red-600 shadow-[0_0_20px_-4px_rgba(239,68,68,0.6)]'
+                  : t.resetBtn
+              }`}>
+              {resetConfirm ? '⚠ Confirm' : '↻ Reset'}
+            </button>
+            <button onClick={toggleTheme}
+              className={`px-5 py-2.5 rounded-2xl border-2 font-bold text-[10px] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 ${t.navBtn}`}>
+              {darkMode ? '☀️ Light' : '🌙 Dark'}
+            </button>
+          </div>
         </div>
 
         {/* Header + readiness ring */}
@@ -305,28 +282,6 @@ ${checkedSteps.length ? checkedSteps.map(s => `✅ ${s}`).join('\n') : '— (non
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Quick-start templates + reset */}
-        <div className="mb-8">
-          <p className={`text-[10px] font-bold uppercase tracking-[0.2em] mb-3 ${t.mutedText}`}>Quick-start templates</p>
-          <div className="flex flex-wrap gap-2 items-center">
-            {templates.map(tpl => (
-              <button key={tpl.id} onClick={() => applyTemplate(tpl)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl border text-sm font-semibold transition-all hover:-translate-y-0.5 ${t.chip}`}>
-                <span>{tpl.icon}</span>
-                <span>{tpl.label}</span>
-              </button>
-            ))}
-            <button onClick={resetAll}
-              className={`ml-auto flex items-center gap-2 px-4 py-2 rounded-xl border text-sm font-semibold transition-all ${
-                resetConfirm
-                  ? 'bg-red-500 border-red-500 text-white hover:bg-red-600 shadow-[0_0_20px_-4px_rgba(239,68,68,0.6)]'
-                  : t.resetBtn
-              }`}>
-              {resetConfirm ? '⚠ Click again to confirm' : '↻ Reset'}
-            </button>
           </div>
         </div>
 
