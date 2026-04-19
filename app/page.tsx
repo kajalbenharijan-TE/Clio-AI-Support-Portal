@@ -40,32 +40,6 @@ export default function SupportOKTA() {
       icon: "📓", 
       description: "AI-powered deep research assistant for internal documents & slack threads." 
     },
-    { 
-      name: "Letter AI", 
-      url: "https://app.letter.ai", 
-      icon: "/Letter_AI.png", 
-      description: "Internal playbooks, sales content, and talk-tracks." 
-    },
-    { name: "Salesforce", url: "https://themis-solutions.lightning.force.com/lightning", icon: "/salesforce .png", description: "Case volume and account management." },
-    { 
-      name: "Slack", 
-      url: "/Slack", 
-      icon: "/Slack.png", 
-      description: "Real-time team communication and technical swarming." 
-    },
-    { 
-      name: "Help Center", 
-      url: "https://help.clio.com", 
-      icon: "❓", 
-      description: "Official Clio Knowledge Base for public product features." 
-    }, 
-    { name: "Linear", url: "https://linear.app/clio", icon: "/Linear.png", description: "Bug tracking and engineering sprints." },
-    {
-      name: "Support Inside Scoop",
-      url: "https://app.letter.ai/landing-page/preview-landing-page?landingPageId=cbefe783-15f4-49c3-bc4d-c03852519307&pageId=2976f870-76b9-4863-b3f8-61667a55f2c3#:~:text=Support%20Communication%20Mediums",
-      icon: "📰",
-      description: "Inside scoop on support comms, mediums, and internal updates."
-    },
     {
       name: "My Metrics",
       url: "https://themis-solutions.lightning.force.com/lightning/r/Dashboard/01ZOG000001zt8f2AA/view",
@@ -78,12 +52,44 @@ export default function SupportOKTA() {
       icon: "📈",
       description: "Team-wide Salesforce dashboard for support performance trends."
     },
+    { 
+      name: "Letter AI", 
+      url: "https://app.letter.ai", 
+      icon: "/Letter_AI.png", 
+      description: "Internal playbooks, sales content, and talk-tracks." 
+    },
+    {
+      name: "Support Inside Scoop",
+      url: "https://app.letter.ai/landing-page/preview-landing-page?landingPageId=cbefe783-15f4-49c3-bc4d-c03852519307&pageId=2976f870-76b9-4863-b3f8-61667a55f2c3#:~:text=Support%20Communication%20Mediums",
+      icon: "📰",
+      description: "Inside scoop on support comms, mediums, and internal updates."
+    },
     {
       name: "Claude",
       url: "https://claude.ai/ask-your-org",
-      icon: "🤖",
+      icon: "/claude.png",
       description: "AI assistant powered by your org's knowledge base."
-    }
+    },
+    { 
+      name: "Help Center", 
+      url: "https://help.clio.com", 
+      icon: "❓", 
+      description: "Official Clio Knowledge Base for public product features." 
+    },
+    { 
+      name: "Slack", 
+      url: "/Slack", 
+      icon: "/Slack.png", 
+      description: "Real-time team communication and technical swarming." 
+    },
+
+    { name: "Linear", url: "https://linear.app/clio",
+       icon: "/Linear.png", 
+       description: "Bug tracking and engineering sprints." 
+      }
+{ name: "Salesforce", url: "https://themis-solutions.lightning.force.com/lightning", 
+      icon: "/salesforce .png", 
+      description: "Case volume and account management." },
   ];
 
   return (
