@@ -52,6 +52,12 @@ export default function SupportOKTA() {
       icon: "📈",
       description: "Team-wide Salesforce dashboard for support performance trends."
     },
+    {
+  name: "Gem",
+  url: "https://gemini.google.com/gem/977ea45f9852?usp=sharing",
+  icon: "💎",
+  description: "CallNote taker — Gemini Gem for summarizing call notes."
+},
     { 
       name: "Letter AI", 
       url: "https://app.letter.ai", 
@@ -76,6 +82,7 @@ export default function SupportOKTA() {
       icon: "❓", 
       description: "Official Clio Knowledge Base for public product features." 
     },
+
     { 
       name: "Slack", 
       url: "/Slack", 
