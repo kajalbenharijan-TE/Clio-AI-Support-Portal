@@ -53,7 +53,7 @@ export default function SupportOKTA() {
       description: "Team-wide Salesforce dashboard for support performance trends."
     },
     {
-  name: "Gem",
+  name: "Notetaker Gem",
   url: "https://gemini.google.com/gem/977ea45f9852?usp=sharing",
   icon: "💎",
   description: "CallNote taker — Gemini Gem for summarizing call notes."
