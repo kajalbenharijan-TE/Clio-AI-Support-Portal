@@ -21,7 +21,7 @@ export default function TroubleshootingPage() {
    { title: "Reproduce Personally", desc: "Attempt to break it yourself in the customer account or Demo." },
     { title: "Reproduction Steps", desc: "List exact, ordered actions taken to reach the error." },
     { title: "Capture Media", desc: "Full-screen screenshots/video including the browser URL bar." },
-    { title: "Verify IDs", desc: "Confirm Account ID and specific User ID (not just requester)." },
+    { title: "Verify Account/User IDs", desc: "Confirm Account ID and specific User ID (not just requester)." },
     { title: "Articulate Gap", desc: "Clearly define Expected vs. Actual behavior." },
     { title: "Complete Template", desc: "Fill out every field in the TE Consult macro (no one-liners)." },
     { title: "Submit to T.E.", desc: "Consult Tech Esc before going to Devs to document gaps." }
