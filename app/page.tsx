@@ -86,7 +86,7 @@ export default function SupportOKTA() {
     { name: "Linear", url: "https://linear.app/clio",
        icon: "/Linear.png", 
        description: "Bug tracking and engineering sprints." 
-      }
+      },
 { name: "Salesforce", url: "https://themis-solutions.lightning.force.com/lightning", 
       icon: "/salesforce .png", 
       description: "Case volume and account management." },
