@@ -22,23 +22,29 @@ export default function SupportOKTA() {
       icon: "🛠️", 
       description: "Step-by-step diagnostic guide and interactive T.E. consult builder." 
     },
-    { 
-      name: "Help Guide", 
-      url: "/guide", 
-      icon: "📚", 
-      description: "Quick-reference tiles for Accounting, Subs, and De-escalation SOPs." 
-    },
      { 
       name: "CSQL", 
       url: "/CSQL", 
       icon: "🎯", 
       description: "Refer to this tile for GameCards for CSQLs." 
     },
+    {
+  name: "Notetaker Gem",
+  url: "https://gemini.google.com/gem/977ea45f9852?usp=sharing",
+  icon: "💎",
+  description: "CallNote taker — Gemini Gem for summarizing call notes."
+},
     { 
       name: "Notebook", 
       url: "https://notebooklm.google.com/", 
       icon: "📓", 
       description: "AI-powered deep research assistant for internal documents & slack threads." 
+    },
+    { 
+      name: "Help Guide", 
+      url: "/guide", 
+      icon: "📚", 
+      description: "Quick-reference tiles for Accounting, Subs, and De-escalation SOPs." 
     },
     {
       name: "My Metrics",
@@ -52,12 +58,6 @@ export default function SupportOKTA() {
       icon: "📈",
       description: "Team-wide Salesforce dashboard for support performance trends."
     },
-    {
-  name: "Notetaker Gem",
-  url: "https://gemini.google.com/gem/977ea45f9852?usp=sharing",
-  icon: "💎",
-  description: "CallNote taker — Gemini Gem for summarizing call notes."
-},
     { 
       name: "Letter AI", 
       url: "https://app.letter.ai", 
