@@ -59,7 +59,31 @@ export default function SupportOKTA() {
       icon: "❓", 
       description: "Official Clio Knowledge Base for public product features." 
     }, 
-    { name: "Linear", url: "https://linear.app/clio", icon: "/Linear.png", description: "Bug tracking and engineering sprints." }
+    { name: "Linear", url: "https://linear.app/clio", icon: "/Linear.png", description: "Bug tracking and engineering sprints." },
+    {
+      name: "Support Inside Scoop",
+      url: "https://app.letter.ai/landing-page/preview-landing-page?landingPageId=cbefe783-15f4-49c3-bc4d-c03852519307&pageId=2976f870-76b9-4863-b3f8-61667a55f2c3#:~:text=Support%20Communication%20Mediums",
+      icon: "📰",
+      description: "Inside scoop on support comms, mediums, and internal updates."
+    },
+    {
+      name: "My Metrics",
+      url: "https://themis-solutions.lightning.force.com/lightning/r/Dashboard/01ZOG000001zt8f2AA/view",
+      icon: "📊",
+      description: "Personal Salesforce dashboard tracking your individual KPIs."
+    },
+    {
+      name: "Team Support Metrics",
+      url: "https://themis-solutions.lightning.force.com/lightning/r/Dashboard/01ZOG000004EvKH2A0/view?queryScope=userFolders",
+      icon: "📈",
+      description: "Team-wide Salesforce dashboard for support performance trends."
+    },
+    {
+      name: "Claude",
+      url: "https://claude.ai/ask-your-org",
+      icon: "🤖",
+      description: "AI assistant powered by your org's knowledge base."
+    }
   ];
 
   return (
