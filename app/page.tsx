@@ -22,6 +22,12 @@ export default function SupportOKTA() {
       icon: "🛠️", 
       description: "Step-by-step diagnostic guide and interactive T.E. consult builder." 
     },
+    { 
+  name: "Skills Transfer Info", 
+  url: "https://app.letter.ai/preview-content/custom-content?contentId=88a10c02-710c-482f-8f15-f4991d3d9cc8", 
+  icon: "/Letter_AI.png", 
+  description: "Reference content for skills transfer across teams and topics." 
+},
      { 
       name: "CSQL", 
       url: "/CSQL", 
